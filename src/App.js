@@ -7,10 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 function App() {
   return (
-    // <>
-    // <p>This is it</p>
-    // <Homepage />
-    // </>
+    
     <Router>
       <>
       <GlobalStyles />
