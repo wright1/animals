@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import ImageCard from "./imageCard"
+import Button from "./button"
+import formatter from "../../utils/utils"
 import cow from "../../images/cow.png"
 import dog from "../../images/dog.png"
 import duck from "../../images/duck.png"
@@ -12,10 +14,29 @@ import pig from "../../images/pig.png"
 import rabbit from "../../images/rabbit.png"
 
 const Game = () =>{
+
+    const [animals, setAnimals] = useState(['cow', 'dog', 'duck', 'elephant', 'giraffe','lion', 'moose', 'panda', 'pig', 'rabbit'])
+
+
+
+    const [animalImages, setAnimalImages] = useState([cow, dog, duck, elephant, giraffe, lion, moose, panda, pig, rabbit ]) // an array of all animal images variables
+
+    console.log(animalImages[0], animalImages[1])
+
+    //picks a random element from the animalImages array and sets it in state
+    const [image, setImage] = useState(animalImages[Math.floor(Math.random()*animalImages.length)])
+    
+    const [buttonOptions, setButtonOptions] = useState(null)
+
+    // useEffect()
+    
+
+
     return(
         <div>
-        <div><h1>This is the game page</h1></div>
-        <ImageCard img={ moose } />
+        
+    <ImageCard img={ image } />   
+        <Button text={ 'cat' } />
         </div>
     )
 }
