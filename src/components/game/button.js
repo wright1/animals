@@ -8,9 +8,9 @@ border: solid 0.3em red;
 border-radius: 5px;
 `
 
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
     return(
-        <Choice>{ text }</Choice>
+        <Choice onClick={ ()=> onClick({ text })}>{ text }</Choice>
     )
 }
 
