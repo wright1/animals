@@ -2,11 +2,17 @@ import React from "react"
 import styled from "styled-components"
 
 const Choice = styled.button`
-width: 15vw;
+width: 18vw;
 height: 10vh;
-border: solid 0.3em red;
+font-family: 'Raleway', serif sans;
+font-size: 1.2em;
+border: solid 0.3em #9DA0BF;
 border-radius: 5px;
+margin-right: 3vw;
+background-color: #D4D7F7;
 `
+
+
 
 const Button = ({ text, onClick }) => {
     return(

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, createRef } from "react"
 import ImageCard from "./imageCard"
 import Button from "./button"
 import Sound from "./audio"
+import ButtonWrapper from "../styles/wappers"
 import { formatter } from "../../utils/utils"
 import { buttonsList } from "../../utils/utils"
 import correct from "../../sound/correct.wav"
@@ -32,6 +33,8 @@ const Game = () => {
     const [image, setImage] = useState(animalImages[Math.floor(Math.random()*animalImages.length)])
     console.log(image)
 
+
+    //returns an array of button labels (correct answer included)
     const [buttonOptions, setButtonOptions] = useState(buttonsList(String(image), animals));
 
     const [score, setScore] = useState(0)
@@ -59,6 +62,11 @@ const Game = () => {
     
 
 
+
+    const elref = createRef();
+    const wrongRef = createRef();
+
+
     const checkAnswer = (the_answer)=>{
         if(the_answer===formatter(String(image))){
             elref.current.play()  
@@ -71,8 +79,7 @@ const Game = () => {
     }
    }
 
-    const elref = createRef();
-    const wrongRef = createRef();
+    
 
     
 
@@ -84,18 +91,18 @@ const Game = () => {
     <Sound ref={ elref } src={ correct }  />
     <Sound ref={ wrongRef } src={ wrong } />
 
-
+       <ButtonWrapper>
         {
             buttonOptions.map((buttonOption,i)=>{
                 return(
-                <Button
-                // ref={elementsRef.current[i]} 
+                <Button 
                 text={buttonOption} 
                 key={buttonOption+i}
                 onClick={checkAnswer}
                 />
             )})
         }
+      </ButtonWrapper>
 
         </div>
     )
