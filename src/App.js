@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyles from "./components/styles/globalstyle"
+import  GlobalStyles  from "./components/styles/globalstyle"
 import Homepage from "./components/homepg/homepg"
 import Game from "./components/game/game"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"

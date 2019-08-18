@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, createRef } from "react"
 import ImageCard from "./imageCard"
 import Button from "./button"
 import Sound from "./audio"
-import ButtonWrapper from "../styles/wappers"
+import Finish from"../Finish/finish"
+import { ButtonWrapper, Wrap  } from "../styles/wappers"
 import { formatter } from "../../utils/utils"
 import { buttonsList } from "../../utils/utils"
 import correct from "../../sound/correct.wav"
@@ -39,6 +40,10 @@ const Game = () => {
 
     const [score, setScore] = useState(0)
 
+    const [counter, setCounter] = useState(0)
+
+    const [limit, setLimit] = useState( false )
+
 
 
 
@@ -54,12 +59,17 @@ const Game = () => {
 
         setButtonOptions(buttonsList(String(image), animals))
         setScore(score+10)
+        
+
 
     },[image])
+
+    
 
 
     //--------------------------------------------------------------------------
     
+
 
 
 
@@ -72,38 +82,51 @@ const Game = () => {
             elref.current.play()  
          
         setImage(animalImages[Math.floor(Math.random()*animalImages.length)])
+        setCounter(prevCounter=>prevCounter+1)
         
     }else{
 
         wrongRef.current.play();
+        setCounter(prevCounter => prevCounter+1)
     }
-   }
+   } 
 
-    
+   console.log(counter)
+
+    const attempt = counter < 8;
 
     
 
     return(
-        <div>
+
         
-    <ImageCard img={ image } />
-    <p>{score}</p>
+        <div>
+            
+        {/* {counter == 8 ? <Finish /> : <Game />} */}
+    { attempt &&<ImageCard img={ image } />}
+
+
+    {attempt==false&&<Wrap>you have scored {score} points</Wrap>}
+
+
     <Sound ref={ elref } src={ correct }  />
     <Sound ref={ wrongRef } src={ wrong } />
 
-       <ButtonWrapper>
-        {
-            buttonOptions.map((buttonOption,i)=>{
+       {attempt&& (<ButtonWrapper>
+        
+            {buttonOptions.map((buttonOption,i)=>{
                 return(
                 <Button 
                 text={buttonOption} 
                 key={buttonOption+i}
                 onClick={checkAnswer}
                 />
-            )})
-        }
-      </ButtonWrapper>
+            )})}
+        
+       </ButtonWrapper>)}
 
+       {/* {attempt == false && <Finish /> } */}
+    
         </div>
     )
 }
