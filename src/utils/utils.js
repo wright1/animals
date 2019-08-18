@@ -30,4 +30,6 @@ const buttonsList = (imageUrl, animalList) =>{
 
 }
 
-export default buttonsList
+export  { buttonsList, formatter }
+
+

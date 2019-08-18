@@ -10,7 +10,7 @@ border-radius: 5px;
 
 const Button = ({ text, onClick }) => {
     return(
-        <Choice onClick={ ()=> onClick({ text })}>{ text }</Choice>
+        <Choice onClick={ ()=> onClick( text )}>{ text }</Choice>
     )
 }
 
