@@ -16,11 +16,14 @@ import rabbit from "../../images/rabbit.png"
 
 const Game = () => {
 
+
+    //-----------------------------Hooks-----------------------------------------------
+
     const [animals, setAnimals] = useState(['cow', 'dog', 'duck', 'elephant', 'giraffe','lion', 'moose', 'panda', 'pig', 'rabbit'])
 
 
-
-    const [animalImages, setAnimalImages] = useState([cow, dog, duck, elephant, giraffe, lion, moose, panda, pig, rabbit ]) // an array of all animal images variable
+    // an array of all animal images variable
+    const [animalImages, setAnimalImages] = useState([cow, dog, duck, elephant, giraffe, lion, moose, panda, pig, rabbit ]) 
 
     //picks a random element from the animalImages array and sets it in state
     const [image, setImage] = useState(animalImages[Math.floor(Math.random()*animalImages.length)])
@@ -28,18 +31,31 @@ const Game = () => {
 
     const [buttonOptions, setButtonOptions] = useState(buttonsList(String(image), animals));
 
+    
+
+
+
+
+    //----------------------useEffect methods----------------------------------------
+    
+
+
+    //render new buttons when image is changed
     useEffect(()=>{
         setButtonOptions(buttonsList(String(image), animals))
 
     },[image])
+
+
+    //--------------------------------------------------------------------------
     
+
+
     const checkAnswer = (the_answer)=>{
         if(the_answer===formatter(String(image))){
          
         setImage(animalImages[Math.floor(Math.random()*animalImages.length)])
         
-    }else{
-        console.log(the_answer)
     }
    }
 
