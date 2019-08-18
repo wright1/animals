@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ImageCard from "./imageCard"
 import Button from "./button"
-import formatter from "../../utils/utils"
+import buttonsList from "../../utils/utils"
 import cow from "../../images/cow.png"
 import dog from "../../images/dog.png"
 import duck from "../../images/duck.png"
@@ -21,21 +21,21 @@ const Game = () =>{
 
     const [animalImages, setAnimalImages] = useState([cow, dog, duck, elephant, giraffe, lion, moose, panda, pig, rabbit ]) // an array of all animal images variables
 
-    console.log(animalImages[0], animalImages[1])
+    // console.log(animalImages[0], animalImages[1])
 
     //picks a random element from the animalImages array and sets it in state
     const [image, setImage] = useState(animalImages[Math.floor(Math.random()*animalImages.length)])
-    
-    const [buttonOptions, setButtonOptions] = useState(null)
 
-    // useEffect()
-    
+    const [buttonOptions, setButtonOptions] = useState(buttonsList(String(image), animals));
 
+    
+console.log( buttonsList(String(image), animals) )
+    
 
     return(
         <div>
         
-    <ImageCard img={ image } />   
+    <ImageCard img={ image } /> 
         <Button text={ 'cat' } />
         </div>
     )
