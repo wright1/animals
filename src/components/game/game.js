@@ -102,7 +102,7 @@ const Game = () => {
         
         <div>
             
-        {/* {counter == 8 ? <Finish /> : <Game />} */}
+    
     { attempt &&<ImageCard img={ image } />}
 
 
