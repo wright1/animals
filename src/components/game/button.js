@@ -10,6 +10,9 @@ border: solid 0.3em #9DA0BF;
 border-radius: 5px;
 margin-right: 3vw;
 background-color: rgb(212,215,247, 0.6);
+@media(max-width: 450px){
+    font-size: 0.7em;
+}
 `
 
 
